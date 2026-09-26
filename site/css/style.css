@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;1,600;1,700&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@400;500&display=swap');
 
 :root {
   --bg: #000000;
@@ -21,7 +21,7 @@
     #8f8f8f 100%
   );
 
-  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Dancing Script', cursive;
   --font-body: 'Inter', sans-serif;
 }
 
@@ -49,11 +49,10 @@ h1.title {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 700;
-  font-size: 56px;
-  line-height: 1;
+  font-size: 72px;
+  line-height: 1.1;
   margin: 0 0 0.4rem;
   color: var(--text);
-  letter-spacing: -0.01em;
   display: inline-block;
 }
 
@@ -101,7 +100,7 @@ button#generate-btn {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 24px;
   cursor: pointer;
   transition: background-position 0.5s ease, box-shadow 0.2s ease, transform 0.15s ease;
   align-self: flex-start;
@@ -137,7 +136,7 @@ h2.block-title {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 600;
-  font-size: 22px;
+  font-size: 28px;
   text-transform: none;
   letter-spacing: normal;
   color: var(--text-dim);
