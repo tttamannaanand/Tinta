@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tinta — palette, art, tracklist, moodboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <h1 class="title">Tinta</h1>
+      <p class="subtitle">Describe a feeling, a scene, or a few words — get a color palette, a matching abstract piece, a real Spotify tracklist you can play, and a photo moodboard.</p>
+    </header>
+
+    <div class="input-row">
+      <textarea id="mood-input" placeholder="golden hour, half-empty coffee, slow rain on a window" rows="2">golden hour, half-empty coffee, slow rain on a window</textarea>
+      <button id="generate-btn">Generate</button>
+    </div>
+    <p id="status"></p>
+    <p id="matched-words"></p>
+
+    <section class="block">
+      <h2 class="block-title">Palette</h2>
+      <div id="swatches"></div>
+    </section>
+
+    <section class="block">
+      <h2 class="block-title">Generative art</h2>
+      <div id="art"></div>
+    </section>
+
+    <section class="block">
+      <h2 class="block-title">Tracklist</h2>
+      <div id="tracklist"></div>
+    </section>
+
+    <section class="block">
+      <h2 class="block-title">Moodboard</h2>
+      <div id="moodboard"></div>
+    </section>
+
+    <footer class="credit">
+      Track playback via <a href="https://open.spotify.com" target="_blank" rel="noopener">Spotify</a>. Photos via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>, credited per image above.
+    </footer>
+  </div>
+
+  <script src="js/lexicon.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/palette.js"></script>
+</body>
+</html>
