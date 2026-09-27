@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500&display=swap');
 
 :root {
   --bg: #000000;
@@ -21,7 +21,7 @@
     #8f8f8f 100%
   );
 
-  --font-display: 'Dancing Script', cursive;
+  --font-display: 'Great Vibes', cursive;
   --font-body: 'Inter', sans-serif;
 }
 
@@ -48,11 +48,13 @@ header.hero {
 h1.title {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 700;
-  font-size: 72px;
-  line-height: 1.1;
-  margin: 0 0 0.4rem;
+  font-weight: 400;
+  font-size: 92px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.5rem;
   color: var(--text);
+  text-shadow: 0 0 18px rgba(255,255,255,0.18);
   display: inline-block;
 }
 
@@ -96,15 +98,19 @@ button#generate-btn {
   text-shadow: 0 1px 0 rgba(255,255,255,0.6);
   border: 1px solid #4d4d4d;
   border-radius: 8px;
-  padding: 0 22px;
+  padding: 0 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: 0.02em;
   cursor: pointer;
   transition: background-position 0.5s ease, box-shadow 0.2s ease, transform 0.15s ease;
   align-self: flex-start;
-  height: 56px;
+  height: 64px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.7);
 }
 button#generate-btn:hover {
@@ -135,12 +141,12 @@ section.block {
 h2.block-title {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 600;
-  font-size: 28px;
+  font-weight: 400;
+  font-size: 36px;
   text-transform: none;
-  letter-spacing: normal;
+  letter-spacing: 0.02em;
   color: var(--text-dim);
-  margin: 0 0 0.7rem;
+  margin: 0 0 0.8rem;
 }
 
 /* swatches */
