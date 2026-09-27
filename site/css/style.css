@@ -53,16 +53,25 @@ h1.title {
   line-height: 1.2;
   letter-spacing: 0.01em;
   margin: 0 0 0.5rem;
-  color: var(--text);
-  text-shadow: 0 0 18px rgba(255,255,255,0.18);
+  background: var(--chrome);
+  background-size: 200% 200%;
+  background-position: 40% 40%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(255,255,255,0.14));
   display: inline-block;
 }
 
 p.subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
   color: var(--text-dim);
-  font-size: 15px;
+  font-size: 22px;
+  line-height: 1.4;
   margin: 0;
-  max-width: 52ch;
+  max-width: 46ch;
 }
 
 .input-row {
