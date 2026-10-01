@@ -14,16 +14,21 @@ function setStatus(msg) {
 }
 
 function renderSwatches(colors) {
-  els.swatches.innerHTML = colors.map((c) => `
+  els.swatches.innerHTML = colors
+    .map(
+      (c) => `
     <div class="swatch" style="background:${c.hex}">
       <span class="swatch-hex">${c.hex}</span>
     </div>
-  `).join('');
+  `,
+    )
+    .join('');
 }
 
 function renderMatchedWords(words) {
   if (!words.length) {
-    els.matchedWords.textContent = "No lexicon matches — using a hashed fallback color for this phrase.";
+    els.matchedWords.textContent =
+      'No lexicon matches — using a hashed fallback color for this phrase.';
     return;
   }
   els.matchedWords.textContent = `Matched mood words: ${[...new Set(words)].join(', ')}`;
@@ -34,14 +39,17 @@ function renderMatchedWords(words) {
 // the same art
 function renderArt(colors, seedText) {
   const rand = seededRandom(seedText || 'seed');
-  const w = 600, h = 220;
-  const circles = colors.map((c, i) => {
-    const r = 35 + rand() * 55;
-    const cx = 40 + rand() * (w - 80);
-    const cy = 40 + rand() * (h - 80);
-    const opacity = 0.45 + rand() * 0.25;
-    return `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}" fill="${c.hex}" fill-opacity="${opacity.toFixed(2)}"/>`;
-  }).join('');
+  const w = 600,
+    h = 220;
+  const circles = colors
+    .map((c) => {
+      const r = 35 + rand() * 55;
+      const cx = 40 + rand() * (w - 80);
+      const cy = 40 + rand() * (h - 80);
+      const opacity = 0.45 + rand() * 0.25;
+      return `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}" fill="${c.hex}" fill-opacity="${opacity.toFixed(2)}"/>`;
+    })
+    .join('');
 
   els.art.innerHTML = `
     <svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstract generative art in the mood's color palette">
@@ -73,7 +81,9 @@ function renderTracklist(tracks, genres) {
     return;
   }
 
-  els.tracklist.innerHTML = tracks.map((t) => `
+  els.tracklist.innerHTML = tracks
+    .map(
+      (t) => `
     <div class="track-embed">
       <iframe
         src="https://open.spotify.com/embed/track/${t.id}?utm_source=generator&theme=0"
@@ -83,16 +93,16 @@ function renderTracklist(tracks, genres) {
         title="${t.name} by ${t.artist}"
       ></iframe>
     </div>
-  `).join('');
+  `,
+    )
+    .join('');
 }
 
 async function fetchImages(keywords) {
-  const key = CONFIG.UNSPLASH_ACCESS_KEY;
-  if (!key || key === 'YOUR_UNSPLASH_ACCESS_KEY') return 'no-key';
-
   const query = keywords.slice(0, 3).join(' ');
   try {
-    const res = await fetch(`https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=8&content_filter=high&client_id=${key}`);
+    const res = await fetch(`/api/unsplash-search?q=${encodeURIComponent(query)}`);
+    if (res.status === 503) return 'no-key';
     if (!res.ok) throw new Error(`status ${res.status}`);
     const data = await res.json();
     return data.results || [];
@@ -104,7 +114,7 @@ async function fetchImages(keywords) {
 
 function renderMoodboard(images) {
   if (images === 'no-key') {
-    els.moodboard.innerHTML = `<p class="empty-note">Add your Unsplash access key in <code>site/js/config.js</code> to show a photo moodboard here (free, instant signup — see README).</p>`;
+    els.moodboard.innerHTML = `<p class="empty-note">Set <code>UNSPLASH_ACCESS_KEY</code> in your environment to show a photo moodboard here (free, instant signup — see README).</p>`;
     return;
   }
   if (images === null) {
@@ -119,7 +129,9 @@ function renderMoodboard(images) {
   // Unsplash API guidelines require attributing the photographer AND
   // Unsplash itself, with utm_source params on both links - this isn't
   // optional decoration, it's a condition of using the free API.
-  els.moodboard.innerHTML = images.map((img) => `
+  els.moodboard.innerHTML = images
+    .map(
+      (img) => `
     <a class="mb-tile" href="${img.links.html}?utm_source=mood_palette&utm_medium=referral" target="_blank" rel="noopener">
       <img src="${img.urls.small}" alt="${img.alt_description || 'mood photo'}" loading="lazy">
       <span class="mb-credit">
@@ -127,7 +139,9 @@ function renderMoodboard(images) {
         on <a href="https://unsplash.com/?utm_source=mood_palette&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a>
       </span>
     </a>
-  `).join('');
+  `,
+    )
+    .join('');
 }
 
 async function generate() {
