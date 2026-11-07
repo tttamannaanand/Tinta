@@ -48,7 +48,7 @@ async function getAccessToken() {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': `Basic ${basic}`,
+      Authorization: `Basic ${basic}`,
     },
     body: 'grant_type=client_credentials',
   });
