@@ -19,7 +19,7 @@ Describe a feeling, a scene, or a few words and get back four things pulled from
 | **Tracklist** | A real, playable Spotify tracklist matched to the mood |
 | **Moodboard** | A grid of photos from Unsplash matched to the mood |
 
-There's no machine-learning sentiment model here — the "understanding" is a hand-curated lexicon (`site/js/lexicon.js`) mapping ~90 common mood/imagery words (*golden*, *rain*, *melancholy*, *neon*...) to a color anchor and a music genre. Same input text always produces the same output — it's a seeded hash, not randomness, so a mood you liked is reproducible.
+There's no machine-learning sentiment model here — the "understanding" is a hand-curated lexicon (`site/js/lexicon.js`) mapping ~75 common mood/imagery words (*golden*, *rain*, *melancholy*, *neon*...) to a color anchor and a music genre. Same input text always produces the same output — it's a seeded hash, not randomness, so a mood you liked is reproducible.
 
 ## How it works
 

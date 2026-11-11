@@ -1,6 +1,6 @@
 // The core "understanding" in this app is a hand-curated lexicon, not a
 // machine-learning sentiment model - that's an honest tradeoff worth
-// stating up front (see site/about.html). Each entry maps a word people
+// stating up front (see the README). Each entry maps a word people
 // commonly use to describe a mood, weather, time of day, or feeling to:
 //   - an HSL color anchor (what that word "looks like")
 //   - a genre/style tag (what that word "sounds like", used as a Spotify
@@ -137,10 +137,18 @@ function tokenize(text) {
     .filter(Boolean);
 }
 
+// own-property lookup only, so words like "constructor" or "toString"
+// don't resolve to Object.prototype members and count as lexicon hits
+function lookupMood(word) {
+  return Object.prototype.hasOwnProperty.call(MOOD_LEXICON, word)
+    ? MOOD_LEXICON[word]
+    : undefined;
+}
+
 function analyzeMood(text) {
   const tokens = tokenize(text);
   const matched = tokens
-    .map((t) => MOOD_LEXICON[t])
+    .map(lookupMood)
     .filter(Boolean);
 
   if (matched.length === 0) {
@@ -153,7 +161,7 @@ function analyzeMood(text) {
     };
   }
 
-  return { anchors: matched, matchedWords: tokens.filter((t) => MOOD_LEXICON[t]) };
+  return { anchors: matched, matchedWords: tokens.filter((t) => lookupMood(t)) };
 }
 
 function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
