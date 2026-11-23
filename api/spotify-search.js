@@ -66,7 +66,10 @@ async function getAccessToken() {
 
 export default async function handler(req, res) {
   const query = (req.query.q || '').toString().trim();
-  const limit = Math.min(parseInt(req.query.limit, 10) || 6, 10); // Spotify capped new-app search at 10/request in the Feb 2026 changes
+  // Spotify capped new-app search at 10/request in the Feb 2026 changes, and
+  // rejects anything below 1 - clamp to 1..10 so a bad ?limit= (e.g. -3)
+  // can't turn into a Spotify 400.
+  const limit = Math.max(1, Math.min(parseInt(req.query.limit, 10) || 6, 10));
 
   if (!query) {
     res.status(400).json({ error: 'missing required query param: q' });
